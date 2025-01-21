@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:van_dog/config/theme/app_color_theme.dart';
 import 'package:van_dog/config/theme/app_font_theme.dart';
@@ -17,6 +19,16 @@ class MainApp extends StatelessWidget {
         textTheme: appFontTheme,
         colorScheme: appColorTheme,
       ),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en'),
+        const Locale("es"),
+      ],
       home: HomeScreen(),
     );
   }
@@ -32,7 +44,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          'Hello World!',
+          S.of(context)!.helloWorld,
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
