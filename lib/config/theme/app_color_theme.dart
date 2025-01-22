@@ -11,7 +11,18 @@ class AppColorConstants {
   static const Color onSurface = Color(0xffe0e3e7);
 }
 
-ColorScheme appColorTheme = ColorScheme(
+ColorScheme appLightColorTheme = ColorScheme(
+  brightness: Brightness.light,
+  primary: AppColorConstants.onPrimary,
+  onPrimary: AppColorConstants.primaryColor,
+  secondary: AppColorConstants.onSecondary,
+  onSecondary: AppColorConstants.secondary,
+  error: AppColorConstants.onError,
+  onError: AppColorConstants.error,
+  surface: AppColorConstants.onSurface,
+  onSurface: AppColorConstants.surface,
+);
+ColorScheme appDarkColorTheme = ColorScheme(
   brightness: Brightness.dark,
   primary: AppColorConstants.primaryColor,
   onPrimary: AppColorConstants.onPrimary,

@@ -1,7 +1,18 @@
 {
   "@@locale":"en",
-  "helloWorld": "Hello World!",
+  "helloWorld": "Loading...",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
+  },
+  "version": "Version: {version}",
+  "@version": {
+    "description": "The version of the app",
+     "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "1.0.0"
+      }
+     }
   }
+  
 }
