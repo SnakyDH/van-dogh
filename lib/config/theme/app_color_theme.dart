@@ -8,10 +8,22 @@ class AppColorConstants {
   static const Color error = Color(0xffffb4a4);
   static const Color onError = Color(0xffAD1C42);
   static const Color surface = Color(0xff27273A);
-  static const Color onSurface = Color(0xffe0e3e7);
+  static const Color onSurface = Color(0xffFEF9E2);
 }
 
-ColorScheme appColorTheme = ColorScheme(
+ColorScheme appLightColorTheme = ColorScheme(
+  brightness: Brightness.light,
+  primary: AppColorConstants.onPrimary,
+  onPrimary: AppColorConstants.primaryColor,
+  secondary: AppColorConstants.onSecondary,
+  onSecondary: AppColorConstants.secondary,
+  error: AppColorConstants.onError,
+  onError: AppColorConstants.error,
+  surface: AppColorConstants.onSurface,
+  onSurface: AppColorConstants.surface,
+);
+
+ColorScheme appDarkColorTheme = ColorScheme(
   brightness: Brightness.dark,
   primary: AppColorConstants.primaryColor,
   onPrimary: AppColorConstants.onPrimary,
