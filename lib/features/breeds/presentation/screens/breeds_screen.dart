@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:van_dog/config/router/app_route_names.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import 'package:van_dog/features/breeds/domain/entities/breed.dart';
 import 'package:van_dog/features/breeds/presentation/widgets/breed_card.dart';
 
 class BreedsScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class BreedsScreen extends StatelessWidget {
                       breedGroup: "Working",
                       image: "https://cdn2.thedogapi.com/images/BFRYBufpm.jpg",
                       breedId: index,
-                      lifeSpan: "10 - 14 years",
+                      lifeSpan: BreedLifeSpan(min: 10, max: 14),
                       isFavorite: true,
                     );
                   }
@@ -50,7 +51,7 @@ class BreedsScreen extends StatelessWidget {
                     breedGroup: "Hound",
                     image: "https://cdn2.thedogapi.com/images/hMyT4CDXR.jpg",
                     breedId: index,
-                    lifeSpan: "10 - 13 years",
+                    lifeSpan: BreedLifeSpan(min: 10, max: 14),
                   );
                 },
               ),

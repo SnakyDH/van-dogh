@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
 import 'package:van_dog/features/breeds/presentation/screens/breeds_screen.dart';
 import 'package:van_dog/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:van_dog/features/home/presentation/layouts/home_layout.dart';
@@ -21,6 +22,15 @@ final GoRouter appRouter = GoRouter(
           path: "/breeds",
           name: BreedsScreen.routeName,
           builder: (context, state) => BreedsScreen(),
+          routes: [
+            GoRoute(
+              path: "/:id",
+              name: BreedDetailScreen.routeName,
+              builder: (context, state) => BreedDetailScreen(
+                breedId: state.pathParameters["id"]!,
+              ),
+            )
+          ],
         ),
         GoRoute(
           path: "/favorites",

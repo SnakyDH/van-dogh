@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:van_dog/features/breeds/domain/entities/breed.dart';
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
 
 class BreedCard extends StatelessWidget {
   final String breedName;
   final String breedGroup;
   final String image;
   final int breedId;
-  final String lifeSpan;
+  final BreedLifeSpan lifeSpan;
   final bool isFavorite;
 
   const BreedCard({
@@ -26,6 +30,12 @@ class BreedCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           // todo: implement navigation
+          context.pushNamed(
+            BreedDetailScreen.routeName,
+            pathParameters: {
+              "id": breedId.toString(),
+            },
+          );
         },
         child: Container(
           height: 100,
@@ -78,7 +88,10 @@ class BreedCard extends StatelessWidget {
                         style: textTheme.bodyLarge,
                       ),
                       Text(
-                        lifeSpan,
+                        S.of(context)!.yearsRange(
+                              lifeSpan.min,
+                              lifeSpan.max,
+                            ),
                         style: textTheme.bodyMedium,
                       ),
                     ],
