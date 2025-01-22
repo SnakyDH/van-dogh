@@ -1,5 +1,5 @@
 {
-  "@@locale":"en",
+  "@@locale": "en",
   "helloWorld": "Loading...",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
@@ -7,12 +7,20 @@
   "version": "Version: {version}",
   "@version": {
     "description": "The version of the app",
-     "placeholders": {
+    "placeholders": {
       "version": {
         "type": "String",
         "example": "1.0.0"
       }
-     }
+    }
+  },
+  "breeds": "Breeds",
+  "@breeds": {
+    "description": "The breeds of the dog"
   }
-  
+  ,
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "The favorites of the user"
+  }
 }
