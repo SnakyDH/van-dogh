@@ -21,10 +21,16 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: appFontTheme,
         colorScheme: appLightColorTheme,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ),
       ),
       darkTheme: ThemeData(
         textTheme: appFontTheme,
         colorScheme: appDarkColorTheme,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ),
       ),
       localizationsDelegates: const [
         S.delegate,

@@ -6,12 +6,20 @@
   },
   "version": "Versión: {version}",
   "@version": {
-    "description": "The version of the app",
-     "placeholders": {
+    "description": "La versión de la aplicación",
+    "placeholders": {
       "version": {
         "type": "String",
         "example": "1.0.0"
       }
-     }
+    }
+  },
+  "breeds": "Razas",
+  "@breeds": {
+    "description": "Las razas del perro"
+  },
+  "favorites": "Favoritos",
+  "@favorites": {
+    "description": "Los favoritos del usuario"
   }
 }

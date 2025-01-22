@@ -3,7 +3,7 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:van_dog/config/router/app_route_names.dart';
-import 'package:van_dog/features/home/presentation/screens/home_screen.dart';
+import 'package:van_dog/features/breeds/presentation/screens/breeds_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = AppRouteNames.splashScreen;
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 2));
     if (mounted) {
-      context.goNamed(HomeScreen.routeName);
+      context.goNamed(BreedsScreen.routeName);
     }
   }
 
