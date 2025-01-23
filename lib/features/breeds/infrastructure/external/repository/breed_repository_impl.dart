@@ -10,4 +10,9 @@ class BreedRepositoryImpl implements BreedRepository {
   Future<List<Breed>> getBreeds() {
     return _dataSource.getBreeds();
   }
+
+  @override
+  Future<Breed> getBreedById(int breedId) {
+    return _dataSource.getBreedById(breedId);
+  }
 }
