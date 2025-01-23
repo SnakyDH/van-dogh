@@ -1,25 +1,21 @@
+import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
+
 class Breed {
+  final int id;
   final String name;
-  final String temperament;
-  final String origin;
-  final String description;
+  final String imageUrl;
+  final String group;
   final BreedLifeSpan lifeSpan;
+  final List<String>? temperament;
+  bool isFavorite = false;
 
   Breed({
+    required this.id,
     required this.name,
-    required this.temperament,
-    required this.origin,
-    required this.description,
+    required this.imageUrl,
+    required this.group,
     required this.lifeSpan,
-  });
-}
-
-class BreedLifeSpan {
-  final int min;
-  final int max;
-
-  BreedLifeSpan({
-    required this.min,
-    required this.max,
+    this.temperament,
+    this.isFavorite = false,
   });
 }

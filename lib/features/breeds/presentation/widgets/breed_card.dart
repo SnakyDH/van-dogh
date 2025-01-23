@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:van_dog/features/breeds/domain/entities/breed.dart';
+import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
 
@@ -28,15 +28,12 @@ class BreedCard extends StatelessWidget {
     return Hero(
       tag: breedId,
       child: GestureDetector(
-        onTap: () {
-          // todo: implement navigation
-          context.pushNamed(
-            BreedDetailScreen.routeName,
-            pathParameters: {
-              "id": breedId.toString(),
-            },
-          );
-        },
+        onTap: () => context.pushNamed(
+          BreedDetailScreen.routeName,
+          pathParameters: {
+            "id": breedId.toString(),
+          },
+        ),
         child: Container(
           height: 100,
           width: 150,
@@ -79,6 +76,7 @@ class BreedCard extends StatelessWidget {
                     children: [
                       Text(
                         breedName,
+                        textAlign: TextAlign.center,
                         style: textTheme.titleLarge?.copyWith(
                           color: Colors.black,
                         ),
@@ -88,10 +86,12 @@ class BreedCard extends StatelessWidget {
                         style: textTheme.bodyLarge,
                       ),
                       Text(
-                        S.of(context)!.yearsRange(
-                              lifeSpan.min,
-                              lifeSpan.max,
-                            ),
+                        lifeSpan.isSame
+                            ? S.of(context)!.years(lifeSpan.min)
+                            : S.of(context)!.yearsRange(
+                                  lifeSpan.min,
+                                  lifeSpan.max,
+                                ),
                         style: textTheme.bodyMedium,
                       ),
                     ],

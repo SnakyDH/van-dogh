@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:van_dog/config/router/app_route_names.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
-import 'package:van_dog/features/breeds/domain/entities/breed.dart';
+import 'package:van_dog/features/breeds/presentation/provider/breeds_provider.dart';
 import 'package:van_dog/features/breeds/presentation/widgets/breed_card.dart';
 
-class BreedsScreen extends StatelessWidget {
+class BreedsScreen extends StatefulWidget {
   const BreedsScreen({super.key});
 
   static const String routeName = AppRouteNames.breedsScreen;
 
   @override
+  State<BreedsScreen> createState() => _BreedsScreenState();
+}
+
+class _BreedsScreenState extends State<BreedsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<BreedsProvider>().getBreeds();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final breedList = context.watch<BreedsProvider>().breedsFiltered;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -24,37 +38,31 @@ class BreedsScreen extends StatelessWidget {
             spacing: 20,
             children: [
               SearchBar(),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.7,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                ),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  if (index % 3 == 0) {
+              if (breedList.isEmpty)
+                CircularProgressIndicator()
+              else
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.7,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                  ),
+                  itemCount: breedList.length,
+                  itemBuilder: (context, index) {
+                    final breed = breedList[index];
                     return BreedCard(
-                      breedName: "Akita",
-                      breedGroup: "Working",
-                      image: "https://cdn2.thedogapi.com/images/BFRYBufpm.jpg",
-                      breedId: index,
-                      lifeSpan: BreedLifeSpan(min: 10, max: 14),
-                      isFavorite: true,
+                      breedId: breed.id,
+                      breedName: breed.name,
+                      image: breed.imageUrl,
+                      lifeSpan: breed.lifeSpan,
+                      breedGroup: breed.group,
+                      isFavorite: breed.isFavorite,
                     );
-                  }
-
-                  return BreedCard(
-                    breedName: "Afghan Hound",
-                    breedGroup: "Hound",
-                    image: "https://cdn2.thedogapi.com/images/hMyT4CDXR.jpg",
-                    breedId: index,
-                    lifeSpan: BreedLifeSpan(min: 10, max: 14),
-                  );
-                },
-              ),
+                  },
+                ),
             ],
           ),
         ),

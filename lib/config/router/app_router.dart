@@ -6,7 +6,7 @@ import 'package:van_dog/features/home/presentation/layouts/home_layout.dart';
 import 'package:van_dog/features/splash/presentation/screens/splash_screen.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: "/breeds",
+  initialLocation: "/",
   routes: [
     GoRoute(
       path: "/",

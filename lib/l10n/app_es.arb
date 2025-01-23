@@ -22,6 +22,16 @@
   "@favorites": {
     "description": "Los favoritos del usuario"
   },
+  "years": "{year} años",
+  "@years": {
+    "description": "Años",
+    "placeholders": {
+      "year": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
   "yearsRange": "{min} - {max} años",
   "@yearsRange": {
     "description": "Rango de años",
