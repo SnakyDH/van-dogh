@@ -1,4 +1,4 @@
-class GetBreedApiResponseDto {
+class GetBreedsApiResponseDto {
   final Eight weight;
   final Eight height;
   final int id;
@@ -11,7 +11,7 @@ class GetBreedApiResponseDto {
   final String referenceImageId;
   final Image image;
 
-  GetBreedApiResponseDto({
+  GetBreedsApiResponseDto({
     required this.weight,
     required this.height,
     required this.id,
@@ -25,8 +25,8 @@ class GetBreedApiResponseDto {
     required this.image,
   });
 
-  factory GetBreedApiResponseDto.fromJson(Map<String, dynamic> json) =>
-      GetBreedApiResponseDto(
+  factory GetBreedsApiResponseDto.fromJson(Map<String, dynamic> json) =>
+      GetBreedsApiResponseDto(
         weight: Eight.fromJson(json["weight"]),
         height: Eight.fromJson(json["height"]),
         id: json["id"],

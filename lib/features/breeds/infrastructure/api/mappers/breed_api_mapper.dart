@@ -1,11 +1,11 @@
 import 'package:van_dog/features/breeds/domain/entities/breed.dart';
 import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
-import 'package:van_dog/features/breeds/infrastructure/api/dto/get_breed_api_response_dto.dart';
+import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breeds_api_response_dto.dart';
 
 class BreedApiMapper {
   List<Breed> getBreedApiResponseDtoToBreedList(List<dynamic> list) {
     return list.map((e) {
-      final responseData = GetBreedApiResponseDto.fromJson(e);
+      final responseData = GetBreedsApiResponseDto.fromJson(e);
       final lifeSpanCalculated = _calculateLifeSpan(responseData.lifeSpan);
 
       return Breed(
