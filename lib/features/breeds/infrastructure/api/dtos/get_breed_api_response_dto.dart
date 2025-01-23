@@ -1,43 +1,75 @@
-class GetBreedApiResponseDto {
+class GetBreedAndImageResponseDto {
+  final List<GetBreedResponseDto> breeds;
+  final String id;
+  final String url;
+  final int width;
+  final int height;
+
+  GetBreedAndImageResponseDto({
+    required this.breeds,
+    required this.id,
+    required this.url,
+    required this.width,
+    required this.height,
+  });
+
+  factory GetBreedAndImageResponseDto.fromJson(Map<String, dynamic> json) =>
+      GetBreedAndImageResponseDto(
+        breeds: List<GetBreedResponseDto>.from(
+          json["breeds"].map((x) => GetBreedResponseDto.fromJson(x)),
+        ),
+        id: json["id"],
+        url: json["url"],
+        width: json["width"],
+        height: json["height"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "breeds": List<dynamic>.from(breeds.map((x) => x.toJson())),
+        "id": id,
+        "url": url,
+        "width": width,
+        "height": height,
+      };
+}
+
+class GetBreedResponseDto {
   final Eight weight;
   final Eight height;
   final int id;
   final String name;
   final String? countryCode;
-  final String bredFor;
+  final String? bredFor;
   final String? breedGroup;
   final String lifeSpan;
   final String temperament;
   final String referenceImageId;
-  final Image image;
 
-  GetBreedApiResponseDto({
+  GetBreedResponseDto({
     required this.weight,
     required this.height,
     required this.id,
     required this.name,
     this.countryCode,
-    required this.bredFor,
+    this.bredFor,
     this.breedGroup,
     required this.lifeSpan,
     required this.temperament,
     required this.referenceImageId,
-    required this.image,
   });
 
-  factory GetBreedApiResponseDto.fromJson(Map<String, dynamic> json) =>
-      GetBreedApiResponseDto(
+  factory GetBreedResponseDto.fromJson(Map<String, dynamic> json) =>
+      GetBreedResponseDto(
         weight: Eight.fromJson(json["weight"]),
         height: Eight.fromJson(json["height"]),
         id: json["id"],
         name: json["name"],
         countryCode: json["country_code"],
-        bredFor: json["bred_for"] ?? '',
+        bredFor: json["bred_for"],
         breedGroup: json["breed_group"],
         lifeSpan: json["life_span"],
         temperament: json["temperament"],
         referenceImageId: json["reference_image_id"],
-        image: Image.fromJson(json["image"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,7 +83,6 @@ class GetBreedApiResponseDto {
         "life_span": lifeSpan,
         "temperament": temperament,
         "reference_image_id": referenceImageId,
-        "image": image.toJson(),
       };
 }
 
@@ -72,33 +103,5 @@ class Eight {
   Map<String, dynamic> toJson() => {
         "imperial": imperial,
         "metric": metric,
-      };
-}
-
-class Image {
-  final String id;
-  final int width;
-  final int height;
-  final String url;
-
-  Image({
-    required this.id,
-    required this.width,
-    required this.height,
-    required this.url,
-  });
-
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json["id"],
-        width: json["width"],
-        height: json["height"],
-        url: json["url"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "width": width,
-        "height": height,
-        "url": url,
       };
 }

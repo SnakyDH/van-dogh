@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:van_dog/features/breeds/presentation/provider/breed_detail_provider.dart';
 import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
 import 'package:van_dog/features/breeds/presentation/screens/breeds_screen.dart';
 import 'package:van_dog/features/favorites/presentation/screens/favorites_screen.dart';
@@ -26,9 +28,19 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: "/:id",
               name: BreedDetailScreen.routeName,
-              builder: (context, state) => BreedDetailScreen(
-                breedId: state.pathParameters["id"]!,
-              ),
+              builder: (context, state) {
+                final id = state.pathParameters['id']!;
+                return ChangeNotifierProvider<BreedDetailProvider>(
+                  create: (_) {
+                    final provider = BreedDetailProvider();
+                    provider.getBreed(int.parse(id));
+                    return provider;
+                  },
+                  child: BreedDetailScreen(
+                    breedId: id,
+                  ),
+                );
+              },
             )
           ],
         ),

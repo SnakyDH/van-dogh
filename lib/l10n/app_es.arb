@@ -45,5 +45,6 @@
         "example": "10"
       }
     }
-  }
+  },
+  "breedNotFound": "Raza no encontrada"
 }

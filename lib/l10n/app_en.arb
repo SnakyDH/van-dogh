@@ -17,8 +17,7 @@
   "breeds": "Breeds",
   "@breeds": {
     "description": "The breeds of the dog"
-  }
-  ,
+  },
   "favorites": "Favorites",
   "@favorites": {
     "description": "The favorites of the user"
@@ -31,7 +30,6 @@
         "type": "int",
         "example": "1"
       }
-     
     }
   },
   "yearsRange": "{min} - {max} years",
@@ -47,5 +45,9 @@
         "example": "10"
       }
     }
+  },
+  "breedNotFound": "Breed not found",
+  "@breedNotFound": {
+    "description": "Breed not found"
   }
 }

@@ -9,6 +9,15 @@ class BreedApiDataSourceImpl implements BreedDataSource {
   Future<List<Breed>> getBreeds() async {
     final response = await ApiService.instance.get('v1/breeds?limit=10&page=0');
     final List<dynamic> list = response.data;
-    return _breedApiMapper.getBreedApiResponseDtoToBreedList(list);
+    return _breedApiMapper.getBreedsApiResponseDtoToBreedList(list);
+  }
+
+  @override
+  Future<Breed> getBreedById(int breedId) async {
+    final response = await ApiService.instance.get(
+      'v1/images/search?breed_ids=$breedId&include_breeds=true',
+    );
+    final Map<String, dynamic> data = (response.data as List).first;
+    return _breedApiMapper.getBreedApiResponseDtoToBreed(data);
   }
 }

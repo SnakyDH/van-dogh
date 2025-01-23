@@ -6,7 +6,7 @@ class Breed {
   final String imageUrl;
   final String group;
   final BreedLifeSpan lifeSpan;
-  final List<String>? temperament;
+  final List<String>? temperaments;
   bool isFavorite = false;
 
   Breed({
@@ -15,7 +15,14 @@ class Breed {
     required this.imageUrl,
     required this.group,
     required this.lifeSpan,
-    this.temperament,
+    this.temperaments,
     this.isFavorite = false,
   });
+  factory Breed.empty() => Breed(
+        id: 0,
+        name: '',
+        imageUrl: '',
+        group: '',
+        lifeSpan: BreedLifeSpan(max: 0, min: 0),
+      );
 }

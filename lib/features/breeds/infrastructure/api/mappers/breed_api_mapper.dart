@@ -1,11 +1,29 @@
 import 'package:van_dog/features/breeds/domain/entities/breed.dart';
 import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
-import 'package:van_dog/features/breeds/infrastructure/api/dto/get_breed_api_response_dto.dart';
+import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breed_api_response_dto.dart';
+import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breeds_api_response_dto.dart';
 
 class BreedApiMapper {
-  List<Breed> getBreedApiResponseDtoToBreedList(List<dynamic> list) {
+  Breed getBreedApiResponseDtoToBreed(Map<String, dynamic> dto) {
+    final responseData = GetBreedAndImageResponseDto.fromJson(dto);
+    final breed = responseData.breeds.first;
+    final lifeSpanCalculated = _calculateLifeSpan(
+      breed.lifeSpan,
+    );
+
+    return Breed(
+      id: breed.id,
+      name: breed.name,
+      imageUrl: responseData.url,
+      group: breed.breedGroup ?? "",
+      lifeSpan: lifeSpanCalculated,
+      temperaments: breed.temperament.trim().split(','),
+    );
+  }
+
+  List<Breed> getBreedsApiResponseDtoToBreedList(List<dynamic> list) {
     return list.map((e) {
-      final responseData = GetBreedApiResponseDto.fromJson(e);
+      final responseData = GetBreedsApiResponseDto.fromJson(e);
       final lifeSpanCalculated = _calculateLifeSpan(responseData.lifeSpan);
 
       return Breed(
@@ -14,7 +32,7 @@ class BreedApiMapper {
         imageUrl: responseData.image.url,
         group: responseData.breedGroup ?? '',
         lifeSpan: lifeSpanCalculated,
-        temperament: responseData.temperament.trim().split(','),
+        temperaments: responseData.temperament.trim().split(','),
       );
     }).toList();
   }

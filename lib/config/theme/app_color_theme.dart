@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:van_dog/config/theme/app_font_theme.dart";
 
 class AppColorConstants {
   static const Color primaryColor = Color(0xfffddd18);
@@ -10,6 +11,22 @@ class AppColorConstants {
   static const Color surface = Color(0xff27273A);
   static const Color onSurface = Color(0xffFEF9E2);
 }
+
+ThemeData appTheme = ThemeData(
+  textTheme: appFontTheme,
+  colorScheme: appLightColorTheme,
+  appBarTheme: const AppBarTheme(
+    centerTitle: true,
+  ),
+);
+
+ThemeData appDarkTheme = ThemeData(
+  textTheme: appFontTheme,
+  colorScheme: appDarkColorTheme,
+  appBarTheme: const AppBarTheme(
+    centerTitle: true,
+  ),
+);
 
 ColorScheme appLightColorTheme = ColorScheme(
   brightness: Brightness.light,
