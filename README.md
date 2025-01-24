@@ -104,14 +104,22 @@ La aplicación Van Dogh es una aplicación móvil basada en Flutter diseñada pa
 1. **Pantalla de inicio**
    Muestra una lista de razas de perros con una imagen, nombre y grupo de raza.
 
-2. **Funcionalidad de búsqueda**
+   ![Pantalla de inicio](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/home_screen.png)
+
+3. **Funcionalidad de búsqueda**
    La barra de búsqueda permite a los usuarios filtrar razas dinámicamente.
 
-3. **Pantalla de detalles de la raza**
+   ![Pantalla de búsqueda](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/search.png)
+
+4. **Pantalla de detalles de la raza**
    Muestra información detallada sobre una raza seleccionada, incluyendo su imagen, esperanza de vida y temperamento.
 
-4. **Pantalla de favoritos**
+   ![Pantalla de detalles](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/detail_screen.png)
+
+5. **Pantalla de favoritos**
    Lista de razas marcadas como favoritas por el usuario, con soporte offline.
+
+   ![Pantalla de favoritos](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/favorites_screen.png)
 
 ---
 
@@ -252,14 +260,22 @@ The Van Dogh App is a Flutter-based mobile application designed to provide detai
 1. **Home Screen**
    Displays a list of dog breeds with an image, name, and breed group.
 
+   ![Home Screen](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/home_screen.png)
+
 2. **Search Functionality**
    Search bar allows users to filter breeds dynamically.
+
+   ![Search](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/search.png)
 
 3. **Breed Details Screen**
    Shows detailed information about a selected breed, including its image, life span, and temperament.
 
+   ![Breed Details Screen](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/favorites_screen.png)
+
 4. **Favorites Screen**
    List of breeds marked as favorites by the user, with offline support.
+
+   ![Favorites Screen](https://github.com/SnakyDH/van-dogh/blob/main/screenshots/favorites_screen.png)
 
 ---
 
