@@ -49,5 +49,13 @@
   "breedNotFound": "Breed not found",
   "@breedNotFound": {
     "description": "Breed not found"
+  },
+  "searchBreed": "Search breed",
+  "@searchBreed": {
+    "description": "Search breed"
+  },
+  "errorLoadingBreeds": "Error loading breeds",
+  "@errorLoadingBreeds": {
+    "description": "Error loading breeds"
   }
 }

@@ -39,7 +39,11 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
           label: S.of(context)!.breeds,
         ),
         NavigationDestination(
-          icon: Icon(Icons.favorite),
+          icon: Badge(
+            // todo: implement badge by favorite count
+            //label: Text('1'),
+            child: Icon(Icons.favorite),
+          ),
           label: S.of(context)!.favorites,
         ),
       ],
