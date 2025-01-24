@@ -79,7 +79,9 @@ class _BreedDetailScreenState extends State<BreedDetailScreen> {
                                     breedProvider.breed!.lifeSpan.min,
                                     breedProvider.breed!.lifeSpan.max,
                                   ),
-                          style: textTheme.titleLarge,
+                          style: textTheme.titleLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                         ),
                         if (breedProvider.breed!.group.isNotEmpty)
                           Text(
