@@ -46,5 +46,16 @@
       }
     }
   },
-  "breedNotFound": "Raza no encontrada"
+  "breedNotFound": "Raza no encontrada",
+  "@breedNotFound": {
+    "description": "Raza no encontrada"
+  },
+  "searchBreed": "Buscar raza",
+  "@searchBreed": {
+    "description": "Buscar raza"
+  },
+  "errorLoadingBreeds": "Error cargando razas",
+  "@errorLoadingBreeds": {
+    "description": "Error cargando razas"
+  }
 }

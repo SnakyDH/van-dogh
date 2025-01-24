@@ -12,12 +12,15 @@ class Breed {
   Breed({
     required this.id,
     required this.name,
-    required this.imageUrl,
+    required String imageUrl,
     required this.group,
     required this.lifeSpan,
     this.temperaments,
     this.isFavorite = false,
-  });
+  }) : imageUrl = imageUrl.contains("http")
+            ? imageUrl
+            : "https://cdn2.thedogapi.com/images/$imageUrl.jpg";
+
   factory Breed.empty() => Breed(
         id: 0,
         name: '',

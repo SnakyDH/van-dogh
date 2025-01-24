@@ -2,8 +2,25 @@ import 'package:van_dog/features/breeds/domain/entities/breed.dart';
 import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
 import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breed_api_response_dto.dart';
 import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breeds_api_response_dto.dart';
+import 'package:van_dog/features/breeds/infrastructure/api/dtos/get_breeds_search_api_response_dto.dart';
 
 class BreedApiMapper {
+  List<Breed> getBreedsSearchApiResponseDtoToBreedList(List<dynamic> list) {
+    return list.map((e) {
+      final responseData = GetBreedsSearchApiResponseDto.fromJson(e);
+      final lifeSpanCalculated = _calculateLifeSpan(responseData.lifeSpan);
+
+      return Breed(
+        id: responseData.id,
+        name: responseData.name,
+        imageUrl: responseData.referenceImageId,
+        group: responseData.breedGroup?.name ?? '',
+        lifeSpan: lifeSpanCalculated,
+        temperaments: responseData.temperament?.trim().split(',') ?? [],
+      );
+    }).toList();
+  }
+
   Breed getBreedApiResponseDtoToBreed(Map<String, dynamic> dto) {
     final responseData = GetBreedAndImageResponseDto.fromJson(dto);
     final breed = responseData.breeds.first;
@@ -29,7 +46,7 @@ class BreedApiMapper {
       return Breed(
         id: responseData.id,
         name: responseData.name,
-        imageUrl: responseData.image.url,
+        imageUrl: responseData.image?.url ?? '',
         group: responseData.breedGroup ?? '',
         lifeSpan: lifeSpanCalculated,
         temperaments: responseData.temperament.trim().split(','),
@@ -38,7 +55,9 @@ class BreedApiMapper {
   }
 
   BreedLifeSpan _calculateLifeSpan(String lifeSpan) {
-    final List<int> list = lifeSpan.replaceAll(" ", "").split('-').map(
+    final data = lifeSpan.replaceAll(" ", "").split(RegExp(r"-|–"));
+
+    final List<int> list = data.map(
       (e) {
         final String withOutYears = e.replaceFirst("years", "");
         return int.parse(withOutYears);

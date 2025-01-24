@@ -9,7 +9,7 @@ class GetBreedsApiResponseDto {
   final String lifeSpan;
   final String temperament;
   final String referenceImageId;
-  final Image image;
+  final Image? image;
 
   GetBreedsApiResponseDto({
     required this.weight,
@@ -22,7 +22,7 @@ class GetBreedsApiResponseDto {
     required this.lifeSpan,
     required this.temperament,
     required this.referenceImageId,
-    required this.image,
+    this.image,
   });
 
   factory GetBreedsApiResponseDto.fromJson(Map<String, dynamic> json) =>
@@ -51,7 +51,7 @@ class GetBreedsApiResponseDto {
         "life_span": lifeSpan,
         "temperament": temperament,
         "reference_image_id": referenceImageId,
-        "image": image.toJson(),
+        "image": image?.toJson(),
       };
 }
 
@@ -88,11 +88,11 @@ class Image {
     required this.url,
   });
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json["id"],
-        width: json["width"],
-        height: json["height"],
-        url: json["url"],
+  factory Image.fromJson(Map<String, dynamic>? json) => Image(
+        id: json?["id"],
+        width: json?["width"],
+        height: json?["height"],
+        url: json?["url"],
       );
 
   Map<String, dynamic> toJson() => {
