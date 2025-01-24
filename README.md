@@ -156,6 +156,8 @@ The Van Dogh App is a Flutter-based mobile application designed to provide detai
 
 | Item                                             | Checked? |
 | ------------------------------------------------ | -------- |
+| Use Internationalization (EN/ES)                 | ⭐       |
+| Use SQLite for favorites                         | ⭐       |
 | Use of Provider as State Manager                 | ✅       |
 | Use of TheDogAPI to query breeds                 | ✅       |
 | Use of API-KEY `live_T360G12h...`                | ✅       |
