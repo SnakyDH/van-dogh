@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:van_dog/config/dependency_injection/di.dart';
+import 'package:van_dog/config/env/app_environment.dart';
+import 'package:van_dog/config/router/app_router.dart';
 
-void main() {
+import 'package:van_dog/config/theme/app_color_theme.dart';
+import 'package:van_dog/features/breeds/presentation/provider/breeds_provider.dart';
+import 'package:van_dog/features/favorite/presentation/provider/favorite_breed_provider.dart';
+import 'package:van_dog/features/internationalization/domain/localization_delegates.dart';
+import 'package:van_dog/features/internationalization/domain/supported_locales.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppEnvironment.setUp();
+  getItSetup();
   runApp(const MainApp());
 }
 
@@ -9,11 +22,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => getIt.get<BreedsProvider>(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => getIt.get<FavoriteBreedProvider>(),
+        ),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: appTheme,
+        darkTheme: appDarkTheme,
+        localizationsDelegates: localizationDelegates,
+        supportedLocales: supportedLocales,
+        routerConfig: appRouter,
       ),
     );
   }

@@ -1,0 +1,66 @@
+{
+  "@@locale": "es",
+  "helloWorld": "Cargando...",
+  "@helloWorld": {
+    "description": "El saludo convencional de un programador"
+  },
+  "version": "Versión: {version}",
+  "@version": {
+    "description": "La versión de la aplicación",
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "breeds": "Razas",
+  "@breeds": {
+    "description": "Las razas del perro"
+  },
+  "favorites": "Favoritos",
+  "@favorites": {
+    "description": "Los favoritos del usuario"
+  },
+  "years": "{year} años",
+  "@years": {
+    "description": "Años",
+    "placeholders": {
+      "year": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+  "yearsRange": "{min} - {max} años",
+  "@yearsRange": {
+    "description": "Rango de años",
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "example": "1"
+      },
+      "max": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "breedNotFound": "Raza no encontrada",
+  "@breedNotFound": {
+    "description": "Raza no encontrada"
+  },
+  "searchBreed": "Buscar raza",
+  "@searchBreed": {
+    "description": "Buscar raza"
+  },
+  "errorLoadingBreeds": "Error cargando razas",
+  "@errorLoadingBreeds": {
+    "description": "Error cargando razas"
+  },
+  "originNotFound": "Origen no encontrado",
+  "@originNotFound": {
+    "description": "Origen no encontrado"
+  }
+
+}

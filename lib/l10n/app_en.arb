@@ -1,0 +1,65 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Loading...",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "version": "Version: {version}",
+  "@version": {
+    "description": "The version of the app",
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "breeds": "Breeds",
+  "@breeds": {
+    "description": "The breeds of the dog"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "The favorites of the user"
+  },
+  "years": "{year} years",
+  "@years": {
+    "description": "Years",
+    "placeholders": {
+      "year": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+  "yearsRange": "{min} - {max} years",
+  "@yearsRange": {
+    "description": "Range of years",
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "example": "1"
+      },
+      "max": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "breedNotFound": "Breed not found",
+  "@breedNotFound": {
+    "description": "Breed not found"
+  },
+  "searchBreed": "Search breed",
+  "@searchBreed": {
+    "description": "Search breed"
+  },
+  "errorLoadingBreeds": "Error loading breeds",
+  "@errorLoadingBreeds": {
+    "description": "Error loading breeds"
+  },
+  "originNotFound": "Origin not found",
+  "@originNotFound": {
+    "description": "Origin not found"
+  }
+}
