@@ -6,5 +6,19 @@ class BreedLifeSpan {
     required this.min,
     required this.max,
   });
-  get isSame => min == max;
+  bool get isSame => min == max;
+
+  Map<String, int> toMap() {
+    return {
+      'min': min,
+      'max': max,
+    };
+  }
+
+  factory BreedLifeSpan.fromMap(Map<String, dynamic> map) {
+    return BreedLifeSpan(
+      min: map['min'],
+      max: map['max'],
+    );
+  }
 }

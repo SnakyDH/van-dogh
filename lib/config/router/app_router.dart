@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:van_dog/features/breeds/presentation/provider/breed_detail_provider.dart';
 import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
 import 'package:van_dog/features/breeds/presentation/screens/breeds_screen.dart';
-import 'package:van_dog/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:van_dog/features/favorite//presentation/screens/favorites_screen.dart';
 import 'package:van_dog/features/home/presentation/layouts/home_layout.dart';
 import 'package:van_dog/features/splash/presentation/screens/splash_screen.dart';
 

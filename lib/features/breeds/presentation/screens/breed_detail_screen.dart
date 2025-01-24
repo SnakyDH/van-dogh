@@ -48,6 +48,28 @@ class _BreedDetailScreenState extends State<BreedDetailScreen> {
                           style: textTheme.displayLarge,
                           textAlign: TextAlign.center,
                         ),
+                        Hero(
+                          tag: int.parse(widget.breedId),
+                          child: SizedBox(
+                            height: 200,
+                            child: Image.network(
+                              breedProvider.breed!.imageUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        if (breedProvider.breed!.origin != null &&
+                            breedProvider.breed!.origin!.isNotEmpty)
+                          Text(
+                            breedProvider.breed!.origin!,
+                            style: textTheme.displaySmall,
+                          ),
+                        if (breedProvider.breed!.origin == null ||
+                            breedProvider.breed!.origin!.isEmpty)
+                          Text(
+                            S.of(context)!.originNotFound,
+                            style: textTheme.displaySmall,
+                          ),
                         Text(
                           breedProvider.breed!.lifeSpan.isSame
                               ? S.of(context)!.years(
@@ -57,24 +79,13 @@ class _BreedDetailScreenState extends State<BreedDetailScreen> {
                                     breedProvider.breed!.lifeSpan.min,
                                     breedProvider.breed!.lifeSpan.max,
                                   ),
-                          style: textTheme.titleLarge!.copyWith(
-                            color: AppColorConstants.onSurface,
+                          style: textTheme.titleLarge,
+                        ),
+                        if (breedProvider.breed!.group.isNotEmpty)
+                          Text(
+                            breedProvider.breed!.group,
+                            style: textTheme.displaySmall,
                           ),
-                        ),
-                        SizedBox(
-                          height: 300,
-                          child: Hero(
-                            tag: int.parse(widget.breedId),
-                            child: Image.network(
-                              breedProvider.breed!.imageUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          breedProvider.breed!.group,
-                          style: textTheme.displayMedium,
-                        ),
                         if (breedProvider.breed!.temperaments != null)
                           BreedDetailTemperamentsGrid(
                             temperaments: breedProvider.breed!.temperaments!,
