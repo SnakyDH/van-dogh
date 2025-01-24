@@ -6,6 +6,7 @@ import 'package:van_dog/config/router/app_router.dart';
 
 import 'package:van_dog/config/theme/app_color_theme.dart';
 import 'package:van_dog/features/breeds/presentation/provider/breeds_provider.dart';
+import 'package:van_dog/features/favorite/presentation/provider/favorite_breed_provider.dart';
 import 'package:van_dog/features/internationalization/domain/localization_delegates.dart';
 import 'package:van_dog/features/internationalization/domain/supported_locales.dart';
 
@@ -25,6 +26,9 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => getIt.get<BreedsProvider>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => getIt.get<FavoriteBreedProvider>(),
         ),
       ],
       child: MaterialApp.router(

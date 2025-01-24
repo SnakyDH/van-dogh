@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:van_dog/features/breeds/domain/entities/breed_life_span.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import 'package:van_dog/features/breeds/presentation/screens/breed_detail_screen.dart';
+import 'package:van_dog/features/favorite/presentation/provider/favorite_breed_provider.dart';
 
 class BreedCard extends StatelessWidget {
   final String breedName;
@@ -101,30 +103,49 @@ class BreedCard extends StatelessWidget {
               Positioned(
                 top: 0,
                 right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                    ),
-                  ),
-                  child: IconButton(
-                    icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
-                    ),
-                    onPressed: () {
-                      // todo: Add to favorites and animate
-                    },
-                  ),
+                child: AddFavoriteButton(
+                  isFavorite: isFavorite,
+                  breedId: breedId,
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AddFavoriteButton extends StatelessWidget {
+  final bool isFavorite;
+  final int breedId;
+
+  const AddFavoriteButton({
+    super.key,
+    required this.breedId,
+    required this.isFavorite,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.grey,
+        ),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+        ),
+      ),
+      child: IconButton(
+        icon: Icon(
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        ),
+        onPressed: () => !isFavorite
+            ? context.read<FavoriteBreedProvider>().addFavorite(breedId)
+            : context.read<FavoriteBreedProvider>().removeFavorite(breedId),
       ),
     );
   }

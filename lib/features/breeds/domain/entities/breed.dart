@@ -14,7 +14,7 @@ class Breed {
     required this.id,
     required this.name,
     required String imageUrl,
-    required this.group,
+    this.group = "",
     required this.lifeSpan,
     required this.origin,
     this.temperaments,
@@ -22,4 +22,8 @@ class Breed {
   }) : imageUrl = imageUrl.contains("http")
             ? imageUrl
             : "https://cdn2.thedogapi.com/images/$imageUrl.jpg";
+
+  void like() {
+    isFavorite = !isFavorite;
+  }
 }

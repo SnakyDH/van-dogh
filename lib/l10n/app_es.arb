@@ -57,5 +57,10 @@
   "errorLoadingBreeds": "Error cargando razas",
   "@errorLoadingBreeds": {
     "description": "Error cargando razas"
+  },
+  "originNotFound": "Origen no encontrado",
+  "@originNotFound": {
+    "description": "Origen no encontrado"
   }
+
 }

@@ -57,5 +57,9 @@
   "errorLoadingBreeds": "Error loading breeds",
   "@errorLoadingBreeds": {
     "description": "Error loading breeds"
+  },
+  "originNotFound": "Origin not found",
+  "@originNotFound": {
+    "description": "Origin not found"
   }
 }
