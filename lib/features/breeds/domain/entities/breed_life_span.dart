@@ -6,5 +6,5 @@ class BreedLifeSpan {
     required this.min,
     required this.max,
   });
-  get isSame => min == max;
+  bool get isSame => min == max;
 }

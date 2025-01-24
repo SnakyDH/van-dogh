@@ -16,25 +16,26 @@ class BreedApiMapper {
         imageUrl: responseData.referenceImageId,
         group: responseData.breedGroup?.name ?? '',
         lifeSpan: lifeSpanCalculated,
+        origin: responseData.origin,
         temperaments: responseData.temperament?.trim().split(',') ?? [],
       );
     }).toList();
   }
 
   Breed getBreedApiResponseDtoToBreed(Map<String, dynamic> dto) {
-    final responseData = GetBreedAndImageResponseDto.fromJson(dto);
-    final breed = responseData.breeds.first;
+    final responseData = GetBreedApiResponseDto.fromJson(dto);
     final lifeSpanCalculated = _calculateLifeSpan(
-      breed.lifeSpan,
+      responseData.lifeSpan,
     );
 
     return Breed(
-      id: breed.id,
-      name: breed.name,
-      imageUrl: responseData.url,
-      group: breed.breedGroup ?? "",
+      id: responseData.id,
+      name: responseData.name,
+      imageUrl: responseData.referenceImageId,
+      group: responseData.breedGroup ?? "",
       lifeSpan: lifeSpanCalculated,
-      temperaments: breed.temperament.trim().split(','),
+      origin: responseData.origin,
+      temperaments: responseData.temperament.trim().split(','),
     );
   }
 
@@ -49,6 +50,7 @@ class BreedApiMapper {
         imageUrl: responseData.image?.url ?? '',
         group: responseData.breedGroup ?? '',
         lifeSpan: lifeSpanCalculated,
+        origin: null,
         temperaments: responseData.temperament.trim().split(','),
       );
     }).toList();

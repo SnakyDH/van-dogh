@@ -16,9 +16,9 @@ class BreedApiDataSourceImpl implements BreedDataSource {
   @override
   Future<Breed> getBreedById(int breedId) async {
     final response = await ApiService.instance.get(
-      'v1/images/search?breed_ids=$breedId&include_breeds=true',
+      'v1/breeds/$breedId',
     );
-    final Map<String, dynamic> data = (response.data as List).first;
+    final Map<String, dynamic> data = response.data;
     return _breedApiMapper.getBreedApiResponseDtoToBreed(data);
   }
 
